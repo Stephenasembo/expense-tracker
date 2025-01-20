@@ -13,6 +13,8 @@ function showForm() {
   inputDialog.show();
 }
 
+let userValues = {};
+
 function getInputDetails(event) {
   event.preventDefault();
   const categoryValue = categoryInput.value;
@@ -20,6 +22,14 @@ function getInputDetails(event) {
   const dateValue = dateInput.value;
   const descriptionValue = descriptionInput.value;
 
+  userValues = {
+    categoryValue,
+    amountValue,
+    dateValue,
+    descriptionValue,
+  };
+
+  console.log(userValues);
   inputDialog.close();
 };
 
