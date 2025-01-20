@@ -1,26 +1,18 @@
 import '../styles/styles.css';
-
-const addExpenseBtn = document.querySelector('#addExpenseBtn');
-const inputDialog = document.querySelector('#inputDialog');
-const confirmBtn = document.querySelector('#confirm');
-const closeBtn = document.querySelector('#close');
-const categoryInput = document.querySelector('#category');
-const amountInput = document.querySelector('#amount');
-const dateInput = document.querySelector('#date');
-const descriptionInput = document.querySelector('#description');
+import { domElements, formControls } from './dom';
 
 function showForm() {
-  inputDialog.show();
+  domElements.inputDialog.show();
 }
 
 let userValues = {};
 
 function getInputDetails(event) {
   event.preventDefault();
-  const categoryValue = categoryInput.value;
-  const amountValue = amountInput.value;
-  const dateValue = dateInput.value;
-  const descriptionValue = descriptionInput.value;
+  const categoryValue = formControls.categoryInput.value;
+  const amountValue = formControls.amountInput.value;
+  const dateValue = formControls.dateInput.value;
+  const descriptionValue = formControls.descriptionInput.value;
 
   userValues = {
     categoryValue,
@@ -29,14 +21,13 @@ function getInputDetails(event) {
     descriptionValue,
   };
 
-  console.log(userValues);
-  inputDialog.close();
-};
+  domElements.inputDialog.close();
+}
 
 function closeForm(event) {
   event.preventDefault();
-  inputDialog.close();
+  domElements.inputDialog.close();
 }
-addExpenseBtn.addEventListener('click', showForm);
-confirmBtn.addEventListener('click', getInputDetails);
-closeBtn.addEventListener('click', closeForm);
+domElements.addExpenseBtn.addEventListener('click', showForm);
+formControls.confirmBtn.addEventListener('click', getInputDetails);
+formControls.closeBtn.addEventListener('click', closeForm);
