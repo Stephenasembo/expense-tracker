@@ -1,5 +1,6 @@
 import '../styles/styles.css';
 import { domElements, formControls } from './dom';
+import clientSideValidation from './form-handling';
 
 function showForm() {
   domElements.inputDialog.show();
@@ -20,6 +21,8 @@ function getInputDetails(event) {
     dateValue,
     descriptionValue,
   };
+
+  clientSideValidation(formControls);
 
   domElements.inputDialog.close();
 }
