@@ -1,6 +1,7 @@
 import '../styles/styles.css';
 import { saveExpense, removeExpense, retrieveExpense } from './storage';
 import { setUpButtons } from './form-handling';
+import displayExpense from './ui';
 
 setUpButtons();
 
@@ -15,5 +16,7 @@ function createExpense(inputObj) {
   const expenseName = JSON.stringify(inputObj.categoryValue);
   saveExpense(expenseName, inputObj);
 }
+
+displayExpense(testInput);
 
 createExpense(testInput);
