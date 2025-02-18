@@ -1,7 +1,7 @@
 import '../styles/styles.css';
 import { confirmForm, setUpButtons } from './form-handling';
 import { formControls } from './dom';
-import './expenseManager';
+import createExpense from './expenseManager';
 
 setUpButtons();
 
@@ -23,6 +23,8 @@ function getUserInput(event) {
   Object.assign(inputValues, userValues);
 
   confirmForm(event);
+
+  createExpense(inputValues);
 }
 
 formControls.confirmBtn.addEventListener('click', getUserInput);
