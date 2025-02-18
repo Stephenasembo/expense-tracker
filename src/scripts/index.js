@@ -1,7 +1,8 @@
 import '../styles/styles.css';
 import { saveExpense, removeExpense, retrieveExpense } from './storage';
-import { setUpButtons } from './form-handling';
+import { confirmForm, setUpButtons } from './form-handling';
 import displayExpense from './ui';
+import { formControls } from './dom';
 
 setUpButtons();
 
@@ -18,5 +19,27 @@ function createExpense(inputObj) {
 }
 
 displayExpense(testInput);
+
+const inputValues = {};
+
+function getUserInput(event) {
+  const categoryValue = formControls.categoryInput.value;
+  const amountValue = formControls.amountInput.value;
+  const dateValue = formControls.dateInput.value;
+  const descriptionValue = formControls.descriptionInput.value;
+
+  const userValues = {
+    categoryValue,
+    amountValue,
+    dateValue,
+    descriptionValue,
+  };
+
+  Object.assign(inputValues, userValues);
+
+  confirmForm(event);
+}
+
+formControls.confirmBtn.addEventListener('click', getUserInput);
 
 createExpense(testInput);
