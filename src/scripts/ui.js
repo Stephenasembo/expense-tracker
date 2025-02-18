@@ -1,6 +1,6 @@
 import { domElements } from './dom';
 
-export default function displayExpense(expenseObj) {
+function displayExpense(expenseObj) {
   const newExpenseDiv = document.createElement('div');
   const categoryPara = document.createElement('p');
   const amountPara = document.createElement('p');
@@ -9,6 +9,8 @@ export default function displayExpense(expenseObj) {
 
   const deleteBtn = document.createElement('button');
   deleteBtn.textContent = 'Delete Expense';
+  const deleteBtnId = `delete${expenseObj.categoryValue}`;
+  deleteBtn.setAttribute('id', deleteBtnId);
   buttonPara.appendChild(deleteBtn);
 
   categoryPara.textContent = expenseObj.categoryValue;
@@ -24,3 +26,11 @@ export default function displayExpense(expenseObj) {
 
   domElements.expenseDiv.appendChild(newExpenseDiv);
 }
+
+function removeExpenseDiv(expenseName) {
+  const className = `.${expenseName}`;
+  const expenseDiv = document.querySelector(className);
+  domElements.expenseDiv.removeChild(expenseDiv);
+}
+
+export { displayExpense, removeExpenseDiv };
