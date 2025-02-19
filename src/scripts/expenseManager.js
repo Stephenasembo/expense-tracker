@@ -1,18 +1,20 @@
-import { saveExpense, removeExpense } from './storage';
+import { saveExpense, removeExpense, updateExpensesStorage } from './storage';
 import { displayExpense, removeExpenseDiv } from './ui';
 
 function deleteExpense(event) {
   let categoryName = event.target.id;
   [, categoryName] = (categoryName.split('delete'));
-  removeExpense(JSON.stringify(categoryName));
+  removeExpense(categoryName);
   removeExpenseDiv(categoryName);
+  updateExpensesStorage();
 }
 
 export default function createExpense(inputObj) {
-  const expenseName = JSON.stringify(inputObj.categoryValue);
+  const expenseName = inputObj.categoryValue;
   saveExpense(expenseName, inputObj);
   displayExpense(inputObj);
   const deleteBtnId = `#delete${inputObj.categoryValue}`;
   const deleteBtn = document.querySelector(deleteBtnId);
   deleteBtn.addEventListener('click', deleteExpense);
+  updateExpensesStorage();
 }
