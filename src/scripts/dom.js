@@ -1,3 +1,4 @@
+const container = document.querySelector('#container');
 const expenseDiv = document.querySelector('#expenseDiv');
 const addExpenseBtn = document.querySelector('#addExpenseBtn');
 const inputDialog = document.querySelector('#inputDialog');
@@ -18,6 +19,7 @@ export const formControls = {
 };
 
 export const domElements = {
+  container,
   expenseDiv,
   addExpenseBtn,
   inputDialog,

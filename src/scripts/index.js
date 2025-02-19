@@ -1,12 +1,13 @@
 import '../styles/styles.css';
 import { confirmForm, setUpButtons } from './form-handling';
 import { formControls } from './dom';
-import { createExpense, activateDeleteBtns } from './expenseManager';
+import { createExpense, activateDeleteBtns, activateEditBtns } from './expenseManager';
 import { updateDisplay } from './ui';
 
 setUpButtons();
 updateDisplay();
 activateDeleteBtns();
+activateEditBtns();
 
 const inputValues = {};
 

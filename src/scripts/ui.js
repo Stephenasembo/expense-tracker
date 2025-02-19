@@ -57,4 +57,37 @@ function updateDisplay() {
   }
 }
 
-export { displayExpense, removeExpenseDiv, updateDisplay };
+function displayEditDialog() {
+  const editDiv = document.createElement('div');
+  editDiv.innerHTML = `
+  <dialog id="editDialog">
+    <form method="dialog">
+      <div>
+        <label for="categoryEdit">Enter the new category for your expense: </label>
+        <input type="text" name="category" id="categoryEdit">
+      </div>
+      <div>
+        <label for="amountEdit">Enter the amount spent: </label>
+        <input type="number" step="0.1" min="0.00" id="amountEdit">
+      </div>
+      <div>
+        <label for="dateEdit">Enter the date for your expenditure: </label>
+        <input type="date" id="dateEdit">
+      </div>
+      <div>
+        <label for="descriptionEdit">Enter additional description: </label>
+        <textarea name="description" id="descriptionEdit"></textarea>
+      </div>
+      <div>
+        <button id="confirmEdit">Confirm</button>
+        <button id="closeEdit">Close</button>
+      </div>
+    </form>
+  </dialog>`;
+
+  domElements.container.appendChild(editDiv);
+  const editDialog = document.querySelector('#editDialog');
+  editDialog.showModal();
+}
+
+export { displayExpense, removeExpenseDiv, updateDisplay, displayEditDialog };
