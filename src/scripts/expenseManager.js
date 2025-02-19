@@ -9,7 +9,7 @@ function deleteExpense(event) {
   updateExpensesStorage();
 }
 
-export default function createExpense(inputObj) {
+function createExpense(inputObj) {
   const expenseName = inputObj.categoryValue;
   saveExpense(expenseName, inputObj);
   displayExpense(inputObj);
@@ -18,3 +18,13 @@ export default function createExpense(inputObj) {
   deleteBtn.addEventListener('click', deleteExpense);
   updateExpensesStorage();
 }
+
+function activateDeleteBtns() {
+  let deleteBtnsArr = document.querySelectorAll('.deleteExpense');
+  deleteBtnsArr = Array.from(deleteBtnsArr);
+  deleteBtnsArr.forEach((btn) => {
+    btn.addEventListener('click', deleteExpense);
+  });
+}
+
+export { createExpense, activateDeleteBtns };

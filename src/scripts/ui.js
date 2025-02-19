@@ -12,6 +12,7 @@ function displayExpense(expenseObj) {
   deleteBtn.textContent = 'Delete Expense';
   const deleteBtnId = `delete${expenseObj.categoryValue}`;
   deleteBtn.setAttribute('id', deleteBtnId);
+  deleteBtn.classList.add('deleteExpense');
   buttonPara.appendChild(deleteBtn);
 
   categoryPara.textContent = expenseObj.categoryValue;
