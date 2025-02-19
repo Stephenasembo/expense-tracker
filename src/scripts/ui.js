@@ -1,4 +1,5 @@
 import { domElements } from './dom';
+import { retrieveExpense } from './storage';
 
 function displayExpense(expenseObj) {
   const newExpenseDiv = document.createElement('div');
@@ -33,4 +34,18 @@ function removeExpenseDiv(expenseName) {
   domElements.expenseDiv.removeChild(expenseDiv);
 }
 
-export { displayExpense, removeExpenseDiv };
+function updateDisplay() {
+  // Returns an array of expense stored keys
+  const storedExpenses = retrieveExpense('userExpenses');
+  if (storedExpenses === null) {
+    return;
+  }
+
+  // Display the expenses from storage
+  for (let i = 0; i < storedExpenses.length; i += 1) {
+    const expenseObj = retrieveExpense(storedExpenses[i]);
+    displayExpense(expenseObj);
+  }
+}
+
+export { displayExpense, removeExpenseDiv, updateDisplay };

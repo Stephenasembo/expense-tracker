@@ -2,8 +2,10 @@ import '../styles/styles.css';
 import { confirmForm, setUpButtons } from './form-handling';
 import { formControls } from './dom';
 import createExpense from './expenseManager';
+import { updateDisplay } from './ui';
 
 setUpButtons();
+updateDisplay();
 
 const inputValues = {};
 
