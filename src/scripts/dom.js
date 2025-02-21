@@ -9,7 +9,7 @@ const amountInput = document.querySelector('#amount');
 const dateInput = document.querySelector('#date');
 const descriptionInput = document.querySelector('#description');
 
-export const formControls = {
+const formControls = {
   categoryInput,
   amountInput,
   dateInput,
@@ -18,9 +18,32 @@ export const formControls = {
   closeBtn,
 };
 
-export const domElements = {
+const domElements = {
   container,
   expenseDiv,
   addExpenseBtn,
   inputDialog,
 };
+
+function editFormControls() {
+  const editDialog = document.querySelector('#editDialog');
+  const categoryEdit = document.querySelector('#categoryEdit');
+  const amountEdit = document.querySelector('#amountEdit');
+  const dateEdit = document.querySelector('#dateEdit');
+  const descriptionEdit = document.querySelector('#descriptionEdit');
+
+  const confirmEditBtn = document.querySelector('#confirmEdit');
+  const cancelEditBtn = document.querySelector('#closeEdit');
+
+  return {
+    editDialog,
+    categoryEdit,
+    amountEdit,
+    dateEdit,
+    descriptionEdit,
+    confirmEditBtn,
+    cancelEditBtn,
+  };
+}
+
+export { formControls, domElements, editFormControls };
