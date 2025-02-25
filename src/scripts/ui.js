@@ -60,26 +60,27 @@ function updateDisplay() {
   }
 }
 
-function displayEditDialog() {
+function displayEditDialog(expenseObj) {
   const editDiv = document.createElement('div');
   editDiv.innerHTML = `
   <dialog id="editDialog">
     <form method="dialog">
       <div>
         <label for="categoryEdit">Enter the new category for your expense: </label>
-        <input type="text" name="category" id="categoryEdit">
+        <input type="text" name="category" id="categoryEdit" value = '${expenseObj.categoryValue}'>
       </div>
       <div>
         <label for="amountEdit">Enter the amount spent: </label>
-        <input type="number" step="0.1" min="0.00" id="amountEdit">
+        <input type="number" step="0.1" min="0.00" id="amountEdit" value = '${expenseObj.amountValue}'>
       </div>
       <div>
         <label for="dateEdit">Enter the date for your expenditure: </label>
-        <input type="date" id="dateEdit">
+        <input type="date" id="dateEdit" value = '${expenseObj.dateValue}'>
       </div>
       <div>
         <label for="descriptionEdit">Enter additional description: </label>
-        <textarea name="description" id="descriptionEdit"></textarea>
+        <textarea name="description" id="descriptionEdit">${expenseObj.descriptionValue}
+        </textarea>
       </div>
       <div>
         <button id="confirmEdit">Confirm</button>

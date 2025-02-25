@@ -60,7 +60,8 @@ function getEditInput(event) {
 function editExpense(event) {
   selectedExpense = event.target.id;
   [, selectedExpense] = selectedExpense.split('edit');
-  displayEditDialog();
+  const expenseObj = retrieveExpense(selectedExpense);
+  displayEditDialog(expenseObj);
   const editForm = editFormControls();
   editForm.editDialog.addEventListener('click', getEditInput);
 }
