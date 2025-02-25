@@ -1,6 +1,14 @@
 import { editFormControls, formControls } from './dom';
 import { saveExpense, removeExpense, updateExpensesStorage, retrieveExpense } from './storage';
-import { displayExpense, removeExpenseDiv, displayEditDialog } from './ui';
+import { displayExpense, removeExpenseDiv, displayEditDialog, updateDisplay } from './ui';
+
+let selectedExpense;
+
+function implementEdit(newValues) {
+  removeExpense(selectedExpense);
+  saveExpense(newValues.categoryValue, newValues);
+  updateDisplay();
+}
 
 function deleteExpense(event) {
   let categoryName = event.target.id;
@@ -39,6 +47,7 @@ function getEditInput(event) {
     case 'confirmEdit':
       editValues = confirmEdit(editFormControls);
       console.log(editValues);
+      implementEdit(editValues);
       break;
     case 'closeEdit':
       closeEdit(event);
@@ -49,7 +58,7 @@ function getEditInput(event) {
 }
 
 function editExpense(event) {
-  let selectedExpense = event.target.id;
+  selectedExpense = event.target.id;
   [, selectedExpense] = selectedExpense.split('edit');
   displayEditDialog();
   const editForm = editFormControls();
