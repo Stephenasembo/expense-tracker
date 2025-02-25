@@ -44,6 +44,9 @@ function removeExpenseDiv(expenseName) {
 }
 
 function updateDisplay() {
+  // Clear the display first
+  domElements.expenseDiv.innerHTML = '';
+
   // Returns an array of expense stored keys
   const storedExpenses = retrieveExpense('userExpenses');
   if (storedExpenses === null) {
